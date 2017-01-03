@@ -55,7 +55,7 @@ git clone https://github.com/marcelopm/TiMap.git
 TiMap requires [npm] and [Composer], so make sure they are installed before trying to install the dependencies:
 
 ```sh
-$ cd timap
+$ cd TiMap
 $ composer install
 $ npm install
 ```
