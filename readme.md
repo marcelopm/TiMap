@@ -38,8 +38,9 @@ And of course TiMap itself is open source with a [public repository][timap] on G
 ### Todo
 
  - Write Tests
- - Add credits
  - Add [Chart.js] locally
+ - Make it responsive and mobile friendly
+ - Add credits
  - Refactore js modules using Vue for JS componets
  - Image analysers:
     - Add new providers
