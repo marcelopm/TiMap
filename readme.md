@@ -6,6 +6,8 @@ Once a search is made, images are ploted on a map (represented by markers) and w
 
 The user then can review the analysis and indicate if the image was correctly tagged or not. That's how the analysis providers get ranked in the system. The more they get it right, more they get used to perform the image analyses.
 
+[![Preview video](https://github.com/marcelopm/TiMap/blob/master/preview.jpg?raw=true)](https://youtu.be/H50SHoXgx3g)
+
 ### Providers
 
 TiMap uses a few APIs to work properly:
