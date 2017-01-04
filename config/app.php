@@ -154,8 +154,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        // ide helper
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         // flickr
         JeroenG\Flickr\FlickrServiceProvider::class,
         // Image
