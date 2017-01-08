@@ -1,14 +1,24 @@
 /* @author marcelo moises */
 
+html, body {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 #map {
     height: 100%;
 }
 
-/* Optional: Makes the sample page fill the window. */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+.map-container {
+    .progress {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+    }
+
 }
 
 .controls {
@@ -56,93 +66,110 @@ html, body {
     width: 345px;
 }
 
-#image {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100%;
-}
-
-#overlay {
-    display: none;
-    background-color: rgba(0, 0, 0, 0.3);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    $size: 80px;
-
-    .row{ 
-        position: relative;
-        margin: 0;
-        z-index: 0;
-        &:before {
-
-            background-color: #ddd;
-            content: "";
-            display: block;
-            width: 1px;
-            height: 80%;
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: calc(50% - 1px);
-            margin: calc(5%) 0;;
-        }
-    }
-
-    div {
-        .btn{
-            &.active, &.active.disabled, &:hover {
-                background-color: rgba(0, 0, 0, 0.3) !important;
-            }
-            &, &.disabled {
-                background-color: transparent !important;
-            }
-        }
-
-        height: 100%;
-        .btn-floating {
-            margin-top: calc(50% - 40px);
-            width: $size;
-            height: $size;
-            line-height: $size;
-            i {
-                line-height: $size;
-                font-size: 2.6em;
-            }
-        }
-
-        .vr {
-            background-color: white;
-            width: 1px;
-            padding: 0;
-            margin-top: 10px;
-            height: 95%;
-        }
-    }
-}
-
 #modal {
+    max-height: 80%;
+    top: 15% !important;
     overflow: hidden;
-    .card-image {
-        height: 356px;
-    }
+
     .card {
         margin: 0;
-    }
-}
 
-.map-container {
-    .progress {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 100;
-    }
+        .card-image {
+            #image {
+                background-size: cover;
+                background-repeat: no-repeat;
+                min-height: 50vh;
+            }
 
+            .card-chip {
+                margin-top: -50px;
+                margin-right: 14px;
+
+                .chip{
+                    display: none;
+                }
+            }
+
+            #overlay {
+                display: none;
+                background-color: rgba(0, 0, 0, 0.25);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                $size: 80px;
+
+                .row{
+                    position: relative;
+                    margin: 0;
+                    z-index: 0;
+                    height: 100%;
+
+                    &:before {
+
+                        background-color: rgba(245, 245, 245, 0.25);
+                        content: "";
+                        display: block;
+                        width: 1px;
+                        height: 80%;
+                        position: absolute;
+                        z-index: -1;
+                        top: 0;
+                        left: calc(50% - 1px);
+                        margin: calc(5%) 0;
+                    }
+
+                    .col {
+                        display : flex;
+                        align-items : center;
+                        height: 100%;
+
+                        &.btn{
+                            &.active, &.active.disabled, &:hover {
+                                background-color: rgba(0, 0, 0, 0.3) !important;
+                            }
+                            &, &.disabled {
+                                background-color: transparent !important;
+                            }
+
+                            .btn-floating {
+                                margin-left: calc(50% - 40px);
+                                width: $size;
+                                height: $size;
+                                line-height: $size;
+
+                                i {
+                                    line-height: $size;
+                                    font-size: 2.6em;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .card-content {
+            height: 80px;
+
+            .card-title .image-title {
+                max-width: 80%;
+            }
+
+            .btn-floating {
+                display: none;
+            }
+        }
+
+        .card-reveal {
+            .chart-holder {
+                width: 48%;
+            }
+        }
+    }
 }
 
 .progress {
@@ -150,29 +177,8 @@ html, body {
     opacity: 0;
 }
 
-.card-chip {
-    margin-top: -50px;
-    margin-right: 14px;
-}
-
-.chip, .card-content .btn-floating {
-    display: none;
-}
-
 .progress.error .indeterminate {
     &:before, &:after {
         animation-play-state: paused;
     }
-}
-
-.chart-holder {
-    width: 48%;
-}
-
-.card-content {
-    margin-bottom: 40px;
-}
-
-.card-title .image-title {
-    width: 90%;
 }
