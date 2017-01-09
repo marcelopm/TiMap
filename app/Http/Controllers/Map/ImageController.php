@@ -111,24 +111,24 @@ class ImageController extends Controller {
         ]);
 
         // in case there are cached images
-//        if (!empty($response['images'])) {
-//            /*
-//             * check for updated photos - containing already analysis and maybe review, @see ImageController::analyse()
-//             */
-//            $hasUpdate = false;
-//            foreach ($response['images'] as $key => $image) {
-//                if ($cacheImage = Cache::get($image['id'])) {
-//                    $hasUpdate = true;
-//                    $response['images'][$key] = $cacheImage;
-//                }
-//            }
-//
-//            // update cache with the updated images
-//            if ($hasUpdate) {
-//                // cache the response - 5 minutes
-//                Cache::put($cacheKey, $response, 5);
-//            }
-//        } else {
+        if (!empty($response['images'])) {
+            /*
+             * check for updated photos - containing already analysis and maybe review, @see ImageController::analyse()
+             */
+            $hasUpdate = false;
+            foreach ($response['images'] as $key => $image) {
+                if ($cacheImage = Cache::get($image['id'])) {
+                    $hasUpdate = true;
+                    $response['images'][$key] = $cacheImage;
+                }
+            }
+
+            // update cache with the updated images
+            if ($hasUpdate) {
+                // cache the response - 5 minutes
+                Cache::put($cacheKey, $response, 5);
+            }
+        } else {
             // make search request to the repository for the given map's bounding box coodinates
             $images = $this->repository->query(array(
                 'bbox' => sprintf('%s, %s, %s, %s', $boundingBox['minlng'], $boundingBox['minlat'], $boundingBox['maxlng'], $boundingBox['maxlat'])
@@ -151,7 +151,7 @@ class ImageController extends Controller {
 
             // cache the response - 5 minutes
             Cache::put($cacheKey, $response, 5);
-//        }
+        }
 
         return response()->json($response);
     }
