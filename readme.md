@@ -2,7 +2,7 @@
 
 Tagged Images on a Map (TiMap) is an interactive map that allows users to search for locations and check related images posted by other people.
 
-Once a search is made, images are ploted on a map (represented by markers) and when they are clicked, the image gets shown and tagged by image analysis services using AI.
+Once a search is made, images are plotted on a map (represented by markers) and when they are clicked, the image gets shown and tagged by image analysis services using AI.
 
 The user then can review the analysis and indicate if the image was correctly tagged or not. That's how the analysis providers get ranked in the system. The more they get it right, more they get used to perform the image analyses.
 
@@ -29,7 +29,7 @@ TiMap uses a number of open source projects to work properly:
     * [Composer] - php package manager
     * [npm] - js package manager
     * [Gulp] - the streaming build system
-* [MaterializeCSS] - bealtiful front-end framework based on Material Design
+* [MaterializeCSS] - beautiful front-end framework based on Material Design
 * [Chart.js] - awesome chart js library
 * [jQuery], [LoDash] - js
 
@@ -41,7 +41,7 @@ And of course TiMap itself is open source with a [public repository][timap] on G
  - Add [Chart.js] locally
  - Make it responsive and mobile friendly
  - Add credits
- - Refactore js modules using Vue for JS componets
+ - Refactor js modules using Vue for JS components
  - Image analysers:
     - Add new providers
     - Add new strategies for determining system's default
@@ -72,7 +72,7 @@ If you have any issues, this should do it for running TiMap locally:
 $ sudo chmod -R 777 storage bootstrap/cache
 ```
 
-And run [Gulp] command to compile assests:
+And run [Gulp] command to compile assets:
 
 ```sh
 $ gulp
@@ -149,7 +149,7 @@ And everything should be good to go with TiMap running on [localhost]
 Want to contribute? Great!
 
 TiMap uses Gulp + Webpack for fast developing.
-Make a change in your file and instantanously see your updates!
+Make a change in your file and instantaneously see your updates!
 
 Open your favorite Terminal and run these commands.
 
@@ -163,7 +163,7 @@ Second Tab:
 $ gulp watch
 ```
 
-Then [localhost:3000] should be automatically openned on your browser
+Then [localhost:3000] should be automatically opened on your browser
 
 License
 ----
