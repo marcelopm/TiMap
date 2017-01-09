@@ -76,9 +76,34 @@ html, body {
 
         .card-image {
             #image {
+                @keyframes bg-position-swing {
+                    0% {
+                        background-position: center;
+                    }
+                    25% {
+                        background-position: bottom right;
+                    }
+                    75% {
+                        background-position: top left;
+                    }
+                    100% {
+                        background-position: center;
+                    }
+                }
+
+                animation-duration: 30s;
+                animation-name: bg-position-swing;
+                animation-fill-mode: forwards;
+                animation-timing-function: cubic-bezier;
+                animation-iteration-count: infinite;
+
                 background-size: cover;
                 background-repeat: no-repeat;
                 min-height: 50vh;
+
+                &:hover {
+                    /*animation-play-state: paused;*/
+                }
             }
 
             .card-chip {
