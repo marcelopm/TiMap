@@ -229,7 +229,10 @@ var _module = {
         this.map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: -33.8688, lng: 151.2195},
             zoom: 13,
-            mapTypeId: 'roadmap'
+            mapTypeId: 'roadmap',
+            streetViewControl: false,
+            mapTypeControl: false,
+            clickableIcons: false
         });
 
         this.addSearchBar();
