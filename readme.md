@@ -77,6 +77,12 @@ And run [Gulp] command to compile assets:
 ```sh
 $ gulp
 ```
+Note: if you get an error from the command above, you might need to install gulp manually:
+
+```sh
+$ npm install gulp-cli -g
+$ npm install gulp -D
+```
 
 ### Configuration
 
