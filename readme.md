@@ -37,15 +37,7 @@ And of course TiMap itself is open source with a [public repository][timap] on G
 
 ### Todo
 
- - Write Tests
- - Add [Chart.js] locally
- - Make it responsive and mobile friendly
- - Add credits
- - Refactor js modules using Vue for JS components
- - Image analysers:
-    - Add new providers
-    - Add new strategies for determining system's default
-
+[TiMap Project]
 
 ### Installation
 
@@ -192,6 +184,7 @@ License
 [localhost:3000]: <http://localhost:3000>
 [timap]: <https://github.com/marcelopm/TiMap>
 [git-repo-url]: <https://github.com/marcelopm/TiMap.git>
+[timap project]: <https://github.com/marcelopm/TiMap/projects/1>
 [laravel]: <https://github.com/laravel/laravel>
 [composer]: <https://github.com/composer/composer>
 [npm]: <https://github.com/npm/npm>
