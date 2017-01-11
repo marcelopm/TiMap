@@ -248,6 +248,14 @@ return [
                 'params' => [
                     'limit' => 3
                 ]
+            ],
+            'clarifai' => [
+                'api_key' => env('CLARIFAI_KEY', ''),
+                'api_endpoint' => 'https://api.clarifai.com/v2/',
+                'client_secret' => env('CLARIFAI_SECRET', ''),
+                'params' => [
+                    'limit' => 3
+                ]
             ]
         ]
     ]
