@@ -16,6 +16,17 @@ use App\Contracts\Image\ImageAnalyserInterface;
 class ImageController extends Controller {
 
     /**
+     * The image repository and analyser gets inject by the IoC, @see \App\Providers\ImageServiceProvider
+     *
+     * @param ImageRepositoryInterface $repository
+     * @param ImageAnalyserInterface $analyser
+     */
+    public function __construct(ImageRepositoryInterface $repository, ImageAnalyserInterface $analyser) {
+        $this->repository = $repository;
+        $this->analyser = $analyser;
+    }
+    
+    /**
      * Handles a XHR made in order to perform a image analysis - tagging, face recognition, etc
      *
      * @param Request $request
@@ -38,7 +49,6 @@ class ImageController extends Controller {
 
         // in case the image has no analysis, proceed to get it done
         if (empty($image['analysis'])) {
-
             // request an analysis from the current anaylser and add to the image
             $image = array_replace_recursive($image, [
                 'analysis' => $this->analyser->analyse(array_only($params, ['url']))
@@ -63,17 +73,6 @@ class ImageController extends Controller {
         }
 
         return response()->json($image['analysis']);
-    }
-
-    /**
-     * The image repository and analyser gets inject by the IoC, @see \App\Providers\ImageServiceProvider
-     *
-     * @param ImageRepositoryInterface $repository
-     * @param ImageAnalyserInterface $analyser
-     */
-    public function __construct(ImageRepositoryInterface $repository, ImageAnalyserInterface $analyser) {
-        $this->repository = $repository;
-        $this->analyser = $analyser;
     }
 
     /**

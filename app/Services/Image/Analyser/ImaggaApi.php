@@ -46,14 +46,12 @@ class ImaggaApi implements ImageAnalyserContract {
                     $this->config['params'], $params
             )
         ]);
-        $body = json_decode($response->getBody(), true);
 
-        if (!isset($body['results'][0]['tags'])) {
-            return [];
-        }
+        $body = json_decode($response->getBody(), true);
+        $data = array_get($response, 'results.0.tags', []);
 
         return [
-            'image_recognition' => $this->formatResponse($body['results'][0]['tags'])
+            'image_recognition' => $this->formatResponse($data)
         ];
     }
 
