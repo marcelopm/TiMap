@@ -9,7 +9,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Application Test Suite">
+        <testsuite name="TiMap">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
@@ -23,5 +23,6 @@
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
+        <env name="DB_DATABASE" value="timap_tests"/>
     </php>
 </phpunit>

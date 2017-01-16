@@ -270,12 +270,12 @@ var _module = {
     });
 
     // setup the analysis review panel listeners
-    $('.increase-weight').click(function (e) {
-        _module.weight.apply(this, ['increase']);
+    $('.increment-weight').click(function (e) {
+        _module.weight.apply(this, ['increment']);
     });
 
-    $('.decrease-weight').click(function (e) {
-        _module.weight.apply(this, ['decrease']);
+    $('.decrement-weight').click(function (e) {
+        _module.weight.apply(this, ['decrement']);
     });
 })();
 

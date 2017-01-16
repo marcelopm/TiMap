@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Config\Analysers as AnalysersConfig;
 use App\Models\Analyser;
 
 /**
@@ -17,7 +18,7 @@ class AnalysersTableSeeder extends Seeder
     public function run() {
 
         // get list of analyser names from app.php config file
-        foreach (Analyser::getNameListFromConfig() as $analyser) {
+        foreach (AnalysersConfig::getNames() as $analyser) {
             // workaround for creating if doesn't exist
             Analyser::firstOrCreate([
                 'name' => $analyser,

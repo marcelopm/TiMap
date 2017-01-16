@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Map;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Analyser;
-use Illuminate\Support\Facades\Session;
+use App\Models\Tables\Analysers;
 
 /**
  *
@@ -33,7 +32,7 @@ class AnalyserController extends Controller {
         $params = $request->only('id', 'hash');
 
         // get the analyser based on image id and analysis hash
-        $analyser = Analyser::getFromAnalysisHash($params['id'], $params['hash']);
+        $analyser = Analysers::getFromAnalysisHash($params['id'], $params['hash']);
 
         // get image from cache
         $image = Cache::get($params['id']);
@@ -47,16 +46,15 @@ class AnalyserController extends Controller {
         // in case it's analysis hasn't being reviewed yet, them proceed to change analyser's weight
         if (!isset($image['analysis']['hashes']['review']) || $image['analysis']['hashes']['review'] !== $reviewHash) {
 
-            // build the db query to change the analyser's weight
-            $query = DB::table('analysers')->where('name', $analyser->name);
+            // change analyser's weight
             if ($operation === 'increase') {
-                $query->increment('weight');
+                $analyser->incrementWeight();
             } else {
-                $query->decrement('weight');
+                $analyser->decrementWeight();
             }
 
             /* update cache with the heaviest @see \App\Providers\ImageServiceProvider */
-            Cache::forever('image.analyser.heaviest', Analyser::getHeaviest()->name);
+            Cache::forever('image.analyser.heaviest', Analysers::getHeaviest()->name);
 
             // tag the image as reviewed - add review hash to image
             $image['analysis'] = array_replace_recursive($image['analysis'], [

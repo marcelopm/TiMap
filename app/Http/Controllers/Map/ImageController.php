@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Contracts\Image\ImageRepositoryInterface;
 use App\Contracts\Image\ImageAnalyserInterface;
+use App\Helpers\Image as ImageHelper;
 
 /**
  *
@@ -62,7 +63,7 @@ class ImageController extends Controller {
              */
             $image['analysis'] = array_replace_recursive($image['analysis'], [
                 'hashes' => [
-                    'analyser' => md5(sprintf('%s.%s', $analyser, $params['id']))
+                    'analyser' => ImageHelper::createAnalysisHash($analyser, $params['id'])
                 ]
             ]);
 

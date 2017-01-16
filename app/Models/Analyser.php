@@ -18,50 +18,16 @@ class Analyser extends Model {
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent
+     * Add one from current weight
      */
-    public static function getHeaviest() {
-        return self::orderBy('weight', 'desc')->limit(1)->get()->first();
+    public function incrementWeight() {
+        self::increment('weight');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent
+     * Sub one from current weight
      */
-    public static function getFromAnalysisHash($id, $hash) {
-        return self::whereRaw("MD5(CONCAT(name,'.',?)) = ?", [(int) $id, $hash])
-                ->get()
-                ->first();
-    }
-
-    /**
-     * Get app's analysers configuration @see config/app.php
-     *
-     * @return type
-     */
-    public static function getConfig() {
-        return config(self::CONFIG_PATH);
-    }
-
-    /**
-     *
-     * @return array
-     */
-    public static function getNameListFromConfig() {
-        return array_keys(self::getConfig());
-    }
-
-    /**
-     *
-     * @return string
-     */
-    public static function getDefaultName() {
-        foreach (self::getConfig() as $key => $analyse) {
-            if (isset($analyse['default']) && $analyse['default'] === true) {
-                $name = $key;
-                break;
-            }
-        }
-
-        return $name;
+    public function decrementWeight() {
+        self::decrement('weight');
     }
 }

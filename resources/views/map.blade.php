@@ -22,12 +22,12 @@
                 <div id="image"></div>
                 <div id="overlay">
                     <div class="row">
-                        <div class="col s6 center increase-weight btn transparent">
+                        <div class="col s6 center increment-weight btn transparent">
                             <span class="btn-floating white waves-effect waves-green">
                                 <i class="material-icons green-text">done</i>
                             </span>
                         </div>
-                        <div class="col s6 center decrease-weight btn transparent">
+                        <div class="col s6 center decrement-weight btn transparent">
                             <span class="btn-floating white valign waves-effect waves-red">
                                 <i class="material-icons red-text">close</i>
                             </span>
