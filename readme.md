@@ -161,7 +161,25 @@ Second Tab:
 $ gulp watch
 ```
 
-Then [localhost:3000] should be automatically opened on your browser
+### Testing
+
+TiMap uses PHPUnit for unit testing, which is included out of the box from Laravel
+
+Before running the tests, make sure:
+* [PHPUnit] is installed
+* phpunit.xml is configured accordingly to desired testing database:
+
+```xml
+<env name="DB_CONNECTION" value="sqlite"/>
+<env name="DB_DATABASE" value="/tmp/timap_tests.db"/>
+```
+**Note: the database specified above has to exist before running the tests**
+
+To run the tests, just use the command bellow:
+
+```sh
+$ phpunit
+```
 
 License
 ----
@@ -193,3 +211,4 @@ License
 [Lodash]: <https://github.com/lodash/lodash>
 [jQuery]: <http://jquery.com>
 [Gulp]: <http://gulpjs.com>
+[PHPUnit]: <https://phpunit.de/>
