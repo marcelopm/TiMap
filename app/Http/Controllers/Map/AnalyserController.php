@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
 use App\Models\Analyser;
-use App\Models\Tables\Analysers;
 
 /**
  *
@@ -32,7 +31,7 @@ class AnalyserController extends Controller {
         $params = $request->only('id', 'hash');
 
         // get the analyser based on image id and analysis hash
-        $analyser = Analysers::getFromAnalysisHash($params['id'], $params['hash']);
+        $analyser = Analyser::getFromAnalysisHash($params['id'], $params['hash']);
 
         // get image from cache
         $image = Cache::get($params['id']);
@@ -54,7 +53,7 @@ class AnalyserController extends Controller {
             }
 
             /* update cache with the heaviest @see \App\Providers\ImageServiceProvider */
-            Cache::forever('image.analyser.heaviest', Analysers::getHeaviest()->name);
+            Cache::forever('image.analyser.heaviest', Analyser::getHeaviest()->name);
 
             // tag the image as reviewed - add review hash to image
             $image['analysis'] = array_replace_recursive($image['analysis'], [

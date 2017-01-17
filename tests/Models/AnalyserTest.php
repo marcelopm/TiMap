@@ -3,7 +3,6 @@
 namespace Tests\Models;
 
 use App\Models\Analyser;
-use App\Models\Tables\Analysers;
 use App\Helpers\Image as ImageHelper;
 
 class AnalyserTest extends Base {
@@ -12,7 +11,7 @@ class AnalyserTest extends Base {
         $lite = factory(Analyser::class)->create();
         $heavy = factory(Analyser::class)->states('heavy')->create();
 
-        $heaviest = Analysers::getHeaviest();
+        $heaviest = Analyser::getHeaviest();
 
         $this->assertEquals(true, (int) $lite->weight < (int) $heaviest->weight);
     }
@@ -22,7 +21,7 @@ class AnalyserTest extends Base {
 
         $hash = ImageHelper::createAnalysisHash($analyser->name, $analyser->id);
         
-        $retrievedAnalyser = Analysers::getFromAnalysisHash($analyser->id, $hash);
+        $retrievedAnalyser = Analyser::getFromAnalysisHash($analyser->id, $hash);
 
         $this->assertEquals(true, (int)$retrievedAnalyser->id === (int)$analyser->id);
     }

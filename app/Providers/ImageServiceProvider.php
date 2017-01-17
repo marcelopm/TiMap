@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Models\Tables\Analysers;
+use App\Models\Analyser;
 use App\Models\Config\Analysers as AnalysersConfig;
 use Illuminate\Support\Facades\Cache;
 
@@ -35,7 +35,7 @@ class ImageServiceProvider extends ServiceProvider {
             $name = Cache::rememberForever('image.analyser.heaviest', function () use ($classNameTpl) {
 
                 // retrieve from DB
-                $analyser = Analysers::getHeaviest();
+                $analyser = Analyser::getHeaviest();
                 
                 $className = sprintf($classNameTpl, ucfirst(data_get($analyser, 'name')));
                 if (class_exists($className)) {
