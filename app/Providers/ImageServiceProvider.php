@@ -28,15 +28,17 @@ class ImageServiceProvider extends ServiceProvider {
         );
 
         $this->app->bind('App\Contracts\Image\ImageAnalyserInterface', function() {
+            $classNameTpl = 'App\Services\Image\Analyser\%sApi';
 
             /* get heaviest analyser's name from cache or retrieve and store it forever into cache
              * until gets updated @see \App\Http\Controllers\Map\AnalyserController::weight() */
-            $name = Cache::rememberForever('image.analyser.heaviest', function () {
+            $name = Cache::rememberForever('image.analyser.heaviest', function () use ($classNameTpl) {
 
                 // retrieve from DB
                 $analyser = Analysers::getHeaviest();
-
-                if ($analyser && !empty($analyser->name)) {
+                
+                $className = sprintf($classNameTpl, ucfirst(data_get($analyser, 'name')));
+                if (class_exists($className)) {
                     return $analyser->name;
                 } else {
                     // otherwise get default according to config and store forever
@@ -46,7 +48,7 @@ class ImageServiceProvider extends ServiceProvider {
                 }
             });
 
-            $className = sprintf('App\Services\Image\Analyser\%sApi', ucfirst($name));
+            $className = sprintf($classNameTpl, ucfirst($name));
             return new $className();
         });
     }
